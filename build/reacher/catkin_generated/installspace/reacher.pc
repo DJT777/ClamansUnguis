@@ -1,0 +1,8 @@
+prefix=/home/dylan/Desktop/noeticws/install
+
+Name: reacher
+Description: Description of reacher
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

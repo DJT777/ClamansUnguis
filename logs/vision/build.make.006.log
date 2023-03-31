@@ -1,0 +1,54 @@
+[ 90%] Built target detector
+[ 95%] [32mBuilding CXX object CMakeFiles/yolo-trt.dir/src/samples/sample_detector.cpp.o[0m
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:15:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kargc[m[K’ was not declared in this scope
+   15 |  ros::init([01;31m[Kargc[m[K, argv, "detection_publisher");
+      |            [01;31m[K^~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:15:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kargv[m[K’ was not declared in this scope
+   15 |  ros::init(argc, [01;31m[Kargv[m[K, "detection_publisher");
+      |                  [01;31m[K^~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:19:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kgeometry_msgs[m[K’ was not declared in this scope
+   19 |  ros::Publisher detection_pub = nh.advertise<[01;31m[Kgeometry_msgs[m[K::PoseArray>("detections", 1000);
+      |                                              [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:19:36:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+   19 |  ros::Publisher detection_pub = nh.[01;31m[Kadvertise<geometry_msgs::PoseArray>[m[K("detections", 1000);
+      |                                    [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:19:90:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kros::NodeHandle::advertise<<expression error> >(const char [11], int)[m[K’
+   19 |  ros::Publisher detection_pub = nh.advertise<geometry_msgs::PoseArray>("detections", 1000[01;31m[K)[m[K;
+      |                                                                                          [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:8[m[K:
+[01m[K/opt/ros/noetic/include/ros/node_handle.h:249:15:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class M> ros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, bool)[m[K’
+  249 |     Publisher [01;36m[Kadvertise[m[K(const std::string& topic, uint32_t queue_size, bool latch = false)
+      |               [01;36m[K^~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/node_handle.h:249:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:19:90:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   19 |  ros::Publisher detection_pub = nh.advertise<geometry_msgs::PoseArray>("detections", 1000[01;31m[K)[m[K;
+      |                                                                                          [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/noetic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:8[m[K:
+[01m[K/opt/ros/noetic/include/ros/node_handle.h:315:13:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class M> ros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, const SubscriberStatusCallback&, const SubscriberStatusCallback&, const VoidConstPtr&, bool)[m[K’
+  315 |   Publisher [01;36m[Kadvertise[m[K(const std::string& topic, uint32_t queue_size,
+      |             [01;36m[K^~~~~~~~~[m[K
+[01m[K/opt/ros/noetic/include/ros/node_handle.h:315:13:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:19:90:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   19 |  ros::Publisher detection_pub = nh.advertise<geometry_msgs::PoseArray>("detections", 1000[01;31m[K)[m[K;
+      |                                                                                          [01;31m[K^[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:80:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kgeometry_msgs[m[K’ is not a class, namespace, or enumeration
+   80 |   [01;31m[Kgeometry_msgs[m[K::PoseArray pose_array_msg
+      |   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:96:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kgeometry_msgs[m[K’ is not a class, namespace, or enumeration
+   96 |     [01;31m[Kgeometry_msgs[m[K::Pose pose_msg;
+      |     [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:97:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_msg[m[K’ was not declared in this scope
+   97 |     [01;31m[Kpose_msg[m[K.position.x = r.rect.x;
+      |     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:105:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_array_msg[m[K’ was not declared in this scope
+  105 |     [01;31m[Kpose_array_msg[m[K.poses.push_back(pose_msg);
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:111:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_array_msg[m[K’ was not declared in this scope
+  111 |   detection_pub.publish([01;31m[Kpose_array_msg[m[K);
+      |                         [01;31m[K^~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/yolo-trt.dir/build.make:63: CMakeFiles/yolo-trt.dir/src/samples/sample_detector.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:157: CMakeFiles/yolo-trt.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

@@ -1,0 +1,22 @@
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:26:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kcap[m[K’ was not declared in this scope
+   26 |     while([01;31m[Kcap[m[K.read(frame) && ros::ok())
+      |           [01;31m[K^~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:26:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kframe[m[K’ was not declared in this scope
+   26 |     while(cap.read([01;31m[Kframe[m[K) && ros::ok())
+      |                    [01;31m[K^~~~~[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:34:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimer[m[K’ was not declared in this scope; did you mean ‘[01m[KTimer[m[K’?
+   34 |         [01;31m[Ktimer[m[K.reset();
+      |         [01;31m[K^~~~~[m[K
+      |         [32m[KTimer[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:35:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kdetector[m[K’ was not declared in this scope; did you mean ‘[01m[KDetector[m[K’?
+   35 |         [01;31m[Kdetector[m[K->detect(batch_img, batch_res);
+      |         [01;31m[K^~~~~~~~[m[K
+      |         [32m[KDetector[m[K
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:35:37:[m[K [01;31m[Kerror: [m[K‘[01m[Kbatch_res[m[K’ was not declared in this scope; did you mean ‘[01m[Kbatch_img[m[K’?
+   35 |         detector->detect(batch_img, [01;31m[Kbatch_res[m[K);
+      |                                     [01;31m[K^~~~~~~~~[m[K
+      |                                     [32m[Kbatch_img[m[K
+make[2]: *** [CMakeFiles/yolo-trt.dir/build.make:63: CMakeFiles/yolo-trt.dir/src/samples/sample_detector.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:157: CMakeFiles/yolo-trt.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

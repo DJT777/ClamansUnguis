@@ -1,0 +1,10 @@
+[ 90%] Built target detector
+[35m[1mScanning dependencies of target yolo-trt[0m
+[ 95%] [32mBuilding CXX object CMakeFiles/yolo-trt.dir/src/samples/sample_detector.cpp.o[0m
+[01m[K/home/dylan/Desktop/noeticws/src/vision/src/samples/sample_detector.cpp:8:10:[m[K [01;31m[Kfatal error: [m[Kros/ros.h: No such file or directory
+    8 | #include [01;31m[K"ros/ros.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/yolo-trt.dir/build.make:63: CMakeFiles/yolo-trt.dir/src/samples/sample_detector.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:157: CMakeFiles/yolo-trt.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

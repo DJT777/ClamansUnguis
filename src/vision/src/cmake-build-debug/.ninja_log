@@ -1,0 +1,21 @@
+# ninja log v5
+7584	7795	1660920554581454205	libdetector.so	4e295f29794e2d52
+2	1853	1660920548641459739	CMakeFiles/detector.dir/modules/plugin_factory.cpp.o	57486fc34e74c38
+2284	4366	1660920551155177669	CMakeFiles/detector.dir/modules/yolov3.cpp.o	2127b8f52d904cd
+1	2700	1660920549490044213	CMakeFiles/detector.dir/modules/calibrator.cpp.o	7c3897c069f62eef
+1853	4487	1660920551275258464	CMakeFiles/detector.dir/modules/yoloplugin_lib.cpp.o	6682d43a260d4945
+2	7486	1660920554269249771	CMakeFiles/detector.dir/modules/yolo.cpp.o	b5fb35cff3fbcad8
+1	2613	1660920549397981071	CMakeFiles/detector.dir/modules/class_detector.cpp.o	e4c06c630a809a6f
+4226	5719	1660920552504082189	CMakeFiles/yolo-trt.dir/samples/sample_detector.cpp.o	d24a6bf50b5a0252
+1	7175	1660920553957045064	CMakeFiles/detector.dir/modules/mish.cu.o	525723cbf77adfce
+2700	4226	1660920551015083407	CMakeFiles/detector.dir/modules/yolov5.cpp.o	7a467b3cd008e12d
+2	5285	1660920552067791341	CMakeFiles/detector.dir/modules/trt_utils.cpp.o	a9867a7ed93ea0bd
+1	2283	1660920549069755957	CMakeFiles/detector.dir/modules/ds_image.cpp.o	74249ab2a9b194f9
+7795	10100	1660920556886948424	yolo-trt	ca4b8d702703a8b5
+1	7215	1660920554001074166	CMakeFiles/detector.dir/modules/chunk.cu.o	a7e21beb32a3f286
+2613	4234	1660920551023088794	CMakeFiles/detector.dir/modules/yolov4.cpp.o	a84f653573fc4d7d
+2031	4372	1660920551163183055	CMakeFiles/detector.dir/modules/yolov2.cpp.o	a888760f9d0cdfac
+1	7143	1660920553925023910	CMakeFiles/detector.dir/modules/detect.cu.o	dd43ff6b97ddf61d
+1	5385	1660920552167858049	CMakeFiles/detector.dir/modules/kernel.cu.o	5184366dcf0a8c94
+1	7584	1660920554369315294	CMakeFiles/detector.dir/modules/hardswish.cu.o	547aafe39553e8a7
+2	2031	1660920548817581734	CMakeFiles/detector.dir/modules/yolo_config_parser.cpp.o	437ff031f655be18

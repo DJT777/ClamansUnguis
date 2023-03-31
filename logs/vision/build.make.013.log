@@ -1,0 +1,5 @@
+[ 90%] Built target detector
+[35m[1mScanning dependencies of target yolo-trt[0m
+[ 95%] [32mBuilding CXX object CMakeFiles/yolo-trt.dir/src/samples/sample_detector.cpp.o[0m
+[100%] [32m[1mLinking CXX executable yolo-trt[0m
+[100%] Built target yolo-trt
