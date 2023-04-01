@@ -12,11 +12,8 @@ class NeuralNetwork:
     def __init__(self, num_classes=10):
         self.num_classes = num_classes
         self.model = self._build_model()
-        self.onnx_session = self._build_onnx_session()
-        self.ready_pub = rospy.Publisher("nn2", Bool, queue_size=10)
-        ready_msg = Bool()
-        ready_msg.data = True
-        self.ready_pub.publish(ready_msg)
+        #self.onnx_session = self._build_onnx_session()
+
 
     def _build_model(self):
         model = tf.keras.models.Sequential([
@@ -45,16 +42,21 @@ class NeuralNetwork:
 
     def predict_robotic_arm(self, inputs):
         input_data = np.array(inputs, dtype=np.float32)
-        predicted_outputs = self.onnx_session.run(None, {'input': input_data})[0]
-        return predicted_outputs
+        #predicted_outputs = self.onnx_session.run(None, {'input': input_data})[0]
+        #return predicted_outputs
 
 
 if __name__ == '__main__':
-    nn = NeuralNetwork()
     rospy.init_node('detection_subscriber', anonymous=True)
+    nn = NeuralNetwork()
+    #rospy.init_node('detection_subscriber', anonymous=True)
     pub = rospy.Publisher("reacher_navigation", Bool, queue_size=10)
     detected = False
     while not rospy.is_shutdown():
+        ready_pub = rospy.Publisher("nn2", Bool, queue_size=10)
+        ready_msg = Bool()
+        ready_msg.data = True
+        ready_pub.publish(ready_msg)
         try:
             data = rospy.wait_for_message("detections", PoseArray, timeout=1.0)
         except rospy.exceptions.ROSException:

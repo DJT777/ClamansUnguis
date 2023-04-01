@@ -28,6 +28,7 @@ int main(int argc, char **argv)
 	ros::Publisher vision_ready_pub = nh.advertise<std_msgs::Bool>("nn1", 10);
 	std_msgs::Bool vision_ready_msg;
 	
+	std::cout << "test" << std::endl;
 	vision_ready_msg.data = false;
 	vision_ready_pub.publish(vision_ready_msg);
 
@@ -54,8 +55,8 @@ int main(int argc, char **argv)
 	Config config_v4_tiny;
 	config_v4_tiny.net_type = YOLOV4_TINY;
 	config_v4_tiny.detect_thresh = 0.5;
-	config_v4_tiny.file_model_cfg = "../configs/yolov4-tiny-synth-mk1.cfg";
-	config_v4_tiny.file_model_weights = "../configs/yolov4-tiny-synth-mk1.weights";
+	config_v4_tiny.file_model_cfg = "/home/dylan/Desktop/noeticws/src/vision/configs/yolov4-tiny-synth-mk1.cfg";
+	config_v4_tiny.file_model_weights = "/home/dylan/Desktop/noeticws/src/vision/configs/yolov4-tiny-synth-mk1.weights";
 	config_v4_tiny.calibration_image_list_file_txt = "../configs/calibration_images.txt";
 	config_v4_tiny.inference_precison = FP16;
 
@@ -70,8 +71,8 @@ int main(int argc, char **argv)
 	std::unique_ptr<Detector> detector(new Detector());
 	detector->init(config_v4_tiny);
 
-	vision_ready_msg.data = true;
-	vision_ready_pub.publish(vision_ready_msg);
+	//vision_ready_msg.data = true;
+	//vision_ready_pub.publish(vision_ready_msg);
 
     	cv::VideoCapture cap(0);
     	cv::Mat frame;
@@ -121,6 +122,10 @@ int main(int argc, char **argv)
 				
 				pose_array_msg.poses.push_back(pose_msg);
 			}
+			
+					
+			vision_ready_msg.data = true;
+			vision_ready_pub.publish(vision_ready_msg);
 			cv::namedWindow("image" + std::to_string(i), cv::WINDOW_NORMAL);
 			cv::imshow("image"+std::to_string(i), batch_img[i]);
 		}
