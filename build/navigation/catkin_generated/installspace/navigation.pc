@@ -1,4 +1,4 @@
-prefix=/home/dylan/Desktop/noeticws/install
+prefix=/home/usi/backup/ClamansUnguis/install
 
 Name: navigation
 Description: Description of navigation

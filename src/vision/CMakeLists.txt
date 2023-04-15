@@ -18,9 +18,9 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 #cuda
-#export PATH=/usr/local/cuda-11.0/bin:$PATH
-#include_directories(/usr/local/cuda/include)
-#link_directories(/usr/local/cuda/lib64)
+set(ENV{PATH} "/usr/local/cuda-11.4/bin:$PATH")
+include_directories(/usr/local/cuda/include)
+link_directories(/usr/local/cuda/lib64)
 find_package(CUDA REQUIRED)
 
 #opencv

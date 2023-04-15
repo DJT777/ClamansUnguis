@@ -1,12 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/detector.dir/src/modules/calibrator.cpp.o"
-  "CMakeFiles/detector.dir/src/modules/chunk.cu.o"
   "CMakeFiles/detector.dir/src/modules/class_detector.cpp.o"
-  "CMakeFiles/detector.dir/src/modules/detect.cu.o"
   "CMakeFiles/detector.dir/src/modules/ds_image.cpp.o"
-  "CMakeFiles/detector.dir/src/modules/hardswish.cu.o"
-  "CMakeFiles/detector.dir/src/modules/kernel.cu.o"
-  "CMakeFiles/detector.dir/src/modules/mish.cu.o"
   "CMakeFiles/detector.dir/src/modules/plugin_factory.cpp.o"
   "CMakeFiles/detector.dir/src/modules/trt_utils.cpp.o"
   "CMakeFiles/detector.dir/src/modules/yolo.cpp.o"
@@ -16,8 +11,14 @@ file(REMOVE_RECURSE
   "CMakeFiles/detector.dir/src/modules/yolov3.cpp.o"
   "CMakeFiles/detector.dir/src/modules/yolov4.cpp.o"
   "CMakeFiles/detector.dir/src/modules/yolov5.cpp.o"
-  "libdetector.pdb"
-  "libdetector.so"
+  "CMakeFiles/detector.dir/src/modules/chunk.cu.o"
+  "CMakeFiles/detector.dir/src/modules/detect.cu.o"
+  "CMakeFiles/detector.dir/src/modules/hardswish.cu.o"
+  "CMakeFiles/detector.dir/src/modules/kernel.cu.o"
+  "CMakeFiles/detector.dir/src/modules/mish.cu.o"
+  "CMakeFiles/detector.dir/cmake_device_link.o"
+  "/home/usi/backup/ClamansUnguis/devel/lib/libdetector.pdb"
+  "/home/usi/backup/ClamansUnguis/devel/lib/libdetector.so"
 )
 
 # Per-language clean rules from dependency scanning.

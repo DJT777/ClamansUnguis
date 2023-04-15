@@ -1,1 +1,8 @@
-/home/dylan/Desktop/noeticws/devel/.private/reacher/lib/pkgconfig/reacher.pc
+prefix=/home/usi/backup/ClamansUnguis/devel
+
+Name: reacher
+Description: Description of reacher
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

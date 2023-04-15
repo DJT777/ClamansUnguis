@@ -67,14 +67,14 @@ set(reacher_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(reacher_SOURCE_PREFIX /home/dylan/Desktop/noeticws/src/reacher)
-  set(reacher_DEVEL_PREFIX /home/dylan/Desktop/noeticws/devel/.private/reacher)
+  set(reacher_SOURCE_PREFIX /home/usi/backup/ClamansUnguis/src/reacher)
+  set(reacher_DEVEL_PREFIX /home/usi/backup/ClamansUnguis/devel)
   set(reacher_INSTALL_PREFIX "")
   set(reacher_PREFIX ${reacher_DEVEL_PREFIX})
 else()
   set(reacher_SOURCE_PREFIX "")
   set(reacher_DEVEL_PREFIX "")
-  set(reacher_INSTALL_PREFIX /home/dylan/Desktop/noeticws/install)
+  set(reacher_INSTALL_PREFIX /home/usi/backup/ClamansUnguis/install)
   set(reacher_PREFIX ${reacher_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/dylan/Desktop/noeticws/install/lib;/home/dylan/Desktop/noeticws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/usi/backup/ClamansUnguis/install/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(reacher_LIBRARIES ${reacher_LIBRARIES})
 
   _list_append_unique(reacher_LIBRARY_DIRS ${${reacher_dep}_LIBRARY_DIRS})
-  _list_append_deduplicate(reacher_EXPORTED_TARGETS ${${reacher_dep}_EXPORTED_TARGETS})
+  list(APPEND reacher_EXPORTED_TARGETS ${${reacher_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

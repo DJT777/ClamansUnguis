@@ -55,8 +55,8 @@ int main(int argc, char **argv)
 	Config config_v4_tiny;
 	config_v4_tiny.net_type = YOLOV4_TINY;
 	config_v4_tiny.detect_thresh = 0.5;
-	config_v4_tiny.file_model_cfg = "/home/dylan/Desktop/noeticws/src/vision/configs/yolov4-tiny-synth-mk1.cfg";
-	config_v4_tiny.file_model_weights = "/home/dylan/Desktop/noeticws/src/vision/configs/yolov4-tiny-synth-mk1.weights";
+	config_v4_tiny.file_model_cfg = "../configs/yolov4-tiny-synth-mk1.cfg";
+	config_v4_tiny.file_model_weights = "../configs/yolov4-tiny-synth-mk1.weights";
 	config_v4_tiny.calibration_image_list_file_txt = "../configs/calibration_images.txt";
 	config_v4_tiny.inference_precison = FP16;
 

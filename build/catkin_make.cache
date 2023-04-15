@@ -1,0 +1,2 @@
+navigation:reacher:vision
+-DCATKIN_DEVEL_PREFIX=/home/usi/backup/ClamansUnguis/devel -DCMAKE_INSTALL_PREFIX=/home/usi/backup/ClamansUnguis/install -G Unix Makefiles

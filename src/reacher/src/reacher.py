@@ -3,78 +3,93 @@
 import rospy
 from geometry_msgs.msg import PoseArray
 from std_msgs.msg import Bool
+from std_msgs.msg import Float32MultiArray
+
 import numpy as np
-import tensorflow as tf
-import onnxruntime as ort
+import getch
+#import tensorflow as tf
+from sensor_msgs.msg import RegionOfInterest
+import os
+import math
+import time
+from Arm_Lib import Arm_Device
+
+time_1 = 500
+time_2 = 1000
+time_sleep = 0.5
+Arm = Arm_Device()
 
 
-class NeuralNetwork:
-    def __init__(self, num_classes=10):
-        self.num_classes = num_classes
-        self.model = self._build_model()
-        #self.onnx_session = self._build_onnx_session()
+def move_arm(input_data):
+        pi = math.pi
+
+        
+        output = input_data
+        
+        dof_angle_limits = [(-90, 90, False),(-90, 90, False),(-90, 90, False),(-90, 90, False),(-90, 180, False),(-30, 60, True),]
+        
+        servo_angle_limits = [(0, 180),(0, 180),(0, 180),(0, 180),(0, 270),(0, 180),]
+        
+        
+        servo_angles = [90] * 6
+        for i, pos in enumerate(output):
+            if i == 5:
+              continue
+        
+            L, U, inversed = dof_angle_limits[i]
+            A, B = servo_angle_limits[i]
+            angle = np.rad2deg(float(pos))
+            if not L <= angle <= U:
+              angle = np.clip(angle, L, U)
+            servo_angles[i] = (angle - L) * ((B-A)/(U-L)) + A
+            if inversed:
+              servo_angles[i] = (B-A) - (servo_angles[i] - A) + A
+            if not A <= servo_angles[i] <= B:
+              raise Exception("(Should Not Happen) The {}-th real world joint angle ({}) is out of range! Should be in [{}, {}]".format(i, servo_angles[i], A, B))
+        Arm.Arm_serial_servo_write6(servo_angles[0], servo_angles[1], servo_angles[2], servo_angles[3], 90, 90, 1000)
+        key = getch.getch()
+        time.sleep(2.5)
+        Arm.Arm_serial_servo_write6(servo_angles[0], 35, servo_angles[2], servo_angles[3], 90, 45, 1000)
+        #key = getch.getch()
+        time.sleep(2.5)
+        Arm.Arm_serial_servo_write6(servo_angles[0], 35, servo_angles[2], servo_angles[3], 90, 140, 1000)
+        #key = getch.getch()
+        time.sleep(2.5)
+        Arm.Arm_serial_servo_write6(90, 90, 90, 90, 90, 140, 1000)
+        #key = getch.getch()
+
+def arm_positions_callback(msg):
+    arm_positions = msg.data
+    print("Received arm positions:", arm_positions)
 
 
-    def _build_model(self):
-        model = tf.keras.models.Sequential([
-            tf.keras.layers.Dense(64, activation='relu', input_shape=(2 + self.num_classes,)),
-            tf.keras.layers.Dense(64, activation='relu'),
-            tf.keras.layers.Dense(3, activation=None)
-        ])
-        model.compile(optimizer='adam', loss='mse')
-        return model
-
-    def _build_onnx_session(self):
-        sess = ort.InferenceSession("robotic_arm.onnx")
-        return sess
-
-    def preprocess_data(self, x, y, z):
-        x_scaled = x / 100.0
-        y_scaled = y / 100.0
-        z_encoded = np.zeros(self.num_classes)
-        z_encoded[z] = 1
-        return np.concatenate([x_scaled, y_scaled, z_encoded])
-
-    def predict_3d_coords(self, x, y, z):
-        input_data = self.preprocess_data(x, y, z)
-        predicted_coords = self.model.predict(np.array([input_data]))[0]
-        return predicted_coords
-
-    def predict_robotic_arm(self, inputs):
-        input_data = np.array(inputs, dtype=np.float32)
-        #predicted_outputs = self.onnx_session.run(None, {'input': input_data})[0]
-        #return predicted_outputs
 
 
 if __name__ == '__main__':
-    rospy.init_node('detection_subscriber', anonymous=True)
-    nn = NeuralNetwork()
-    #rospy.init_node('detection_subscriber', anonymous=True)
-    pub = rospy.Publisher("reacher_navigation", Bool, queue_size=10)
-    detected = False
-    while not rospy.is_shutdown():
-        ready_pub = rospy.Publisher("nn2", Bool, queue_size=10)
-        ready_msg = Bool()
-        ready_msg.data = True
-        ready_pub.publish(ready_msg)
-        try:
-            data = rospy.wait_for_message("detections", PoseArray, timeout=1.0)
-        except rospy.exceptions.ROSException:
-            continue
-        if data.poses:
-            detected = True
-            pub.publish(Bool(False))
-        else:
-            detected = False
-            pub.publish(Bool(True))
-        if detected:
-            for pose in data.poses:
-                x = pose.position.x
-                y = pose.position.y
-                z = int(round(pose.position.z))
-                predicted_3d_coords = nn.predict_3d_coords(x, y, z)
-                print("Detected object ID: ", z)
-                print("3D Position (x, y, z): ", predicted_3d_coords)
-                predicted_robotic_arm = nn.predict_robotic_arm([x, y, z])
-                print("Robotic Arm Servo Positions: ", predicted_robotic_arm)
-                print("")
+    rospy.init_node('arm_positions_listener')
+    rospy.Subscriber("arm_positions", Float32MultiArray, arm_positions_callback)
+    ready_pub = rospy.Publisher("nn2", Bool, queue_size=10)
+    nav_pub = rospy.Publisher("reacher_navigation", Bool, queue_size=10)
+    ready_msg = Bool()
+    ready_msg.data =  False
+    ready_pub.publish(ready_msg)
+    while(True):
+     ready_pub.publish(True)
+     nav_pub.publish(Bool(True))
+     Arm.Arm_serial_servo_write6(90, 80, 25, 0, 90, 0, 750)
+     
+     try:
+       data = rospy.wait_for_message("arm_positions", RegionOfInterest, timeout=.5)
+       reaching = True
+       move_arm(data.data)
+     except rospy.exceptions.ROSException:
+       print("No Arm Positions Received")
+       reaching = False
+       nav_pub.publish(Bool(True))
+    if(reaching == True):
+       print("Reaching")
+    else:
+       print("Not Reaching")
+
+
+   

@@ -43,6 +43,11 @@ if __name__ == '__main__':
             continue
         if(nn1_ready and nn2_ready):
             print('Hello World')
+            while(True):
+              if(reacher_status and detection_status):
+                print("Moving")
+              else:
+                print("Not Moving")
             # rate = rospy.Rate(10) # 10 Hz
             #  with serial.Serial('/dev/ttyUSB0', 9600) as ser:
             #     while not rospy.is_shutdown():

@@ -1,1 +1,8 @@
-/home/dylan/Desktop/noeticws/devel/.private/navigation/lib/pkgconfig/navigation.pc
+prefix=/home/usi/backup/ClamansUnguis/devel
+
+Name: navigation
+Description: Description of navigation
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
